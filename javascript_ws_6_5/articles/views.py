@@ -91,7 +91,8 @@ def comments_create(request, pk):
             comment.save()
         context = {
             'articlePk': article.pk,
-            'commentPk': comment.pk
+            'commentPk': comment.pk,
+            'commentCount' : article.comment_set.all().count()
         }
         return JsonResponse(context, status=200)
     return redirect('accounts:login')
